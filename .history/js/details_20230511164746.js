@@ -13,6 +13,7 @@ const apiUrl = `https://wordpress.runeunhjem.no/wp-json/wc/store/products?id=${p
 
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
+
 // Send a GET request to the API endpoint
 fetch(apiUrl)
   .then((response) => {

@@ -25,4 +25,4 @@ function toggleWishlistedHeart(delay) {
 };
 
 export { toggleWishlistedHeart };
-
+element.addEventListener("touchstart", eventHandler, { passive: true });

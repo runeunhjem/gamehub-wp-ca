@@ -7,11 +7,13 @@ const params = new URLSearchParams(queryString);
 const gameId = parseInt(params.get("id"));
 const game = games.find((e) => e.id === parseInt(gameId));
 const productId = game.productId;
+console.log("productId", productId);
 
 const gamesContainer = document.getElementById("games-container");
 const apiUrl = `https://wordpress.runeunhjem.no/wp-json/wc/store/products?id=${productId}`;
 
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
 
 // Send a GET request to the API endpoint
 fetch(apiUrl)
