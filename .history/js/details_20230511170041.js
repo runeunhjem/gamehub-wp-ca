@@ -24,8 +24,9 @@ fetch(apiUrl)
     throw new Error("Network response was not ok");
   })
   .then((data) => {
+    console.log("data is:", data);
     // Loop through each object in the data array and extract attributes
-    for (const item of data) {
+    // for (const item of data) {
       const attributes = item.attributes.map((attr) => ({ [attr.name]: attr.terms[0].name }));
       const game = {
         productId: item.id, // The actual product WP/WC ID
@@ -68,9 +69,9 @@ fetch(apiUrl)
               games[index] = game;
             }
           });
-        }
-      }
-    }
+        };
+      };
+    // };
 
     // CREATE HTML WITH DEATILS FROM API
     function createDetails() {
