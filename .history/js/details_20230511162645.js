@@ -1,21 +1,15 @@
 import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
-import { getGameData, games } from "./games.js";
-await getGameData();
-console.log("games", games);
 
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 const gameId = parseInt(params.get("id"));
-const game = games.find((e) => e.id === parseInt(gameId));
-console.log("game", game);
-const productId = game.productId;
-console.log("productId", productId);
+// const game = games.find((p) => p.postId === parseInt(gameId));
 
 const gamesContainer = document.getElementById("games-container");
-const apiUrl = `https://wordpress.runeunhjem.no/wp-json/wc/store/products?id=${productId}`;
-
+const apiUrl = `https://wordpress.runeunhjem.no/wp-json/wc/store/products?id=${gameId}`
+console.log("apiUrl", apiUrl);
+// const games = [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
 
 // Send a GET request to the API endpoint
 fetch(apiUrl)
@@ -28,8 +22,10 @@ fetch(apiUrl)
     throw new Error("Network response was not ok");
   })
   .then((data) => {
+    console.log("data", data);
+    
     // Loop through each object in the data array and extract attributes
-    for (const item of data) {
+    // for (const item of data) {
       const attributes = item.attributes.map((attr) => ({ [attr.name]: attr.terms[0].name }));
       const game = {
         productId: item.id, // The actual product WP/WC ID
@@ -74,7 +70,7 @@ fetch(apiUrl)
           });
         };
       };
-    };
+    // };
 
     // CREATE HTML WITH DEATILS FROM API
     function createDetails() {

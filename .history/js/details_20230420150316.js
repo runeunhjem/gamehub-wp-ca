@@ -1,21 +1,9 @@
 import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
-import { getGameData, games } from "./games.js";
-await getGameData();
-console.log("games", games);
-
-const queryString = window.location.search;
-const params = new URLSearchParams(queryString);
-const gameId = parseInt(params.get("id"));
-const game = games.find((e) => e.id === parseInt(gameId));
-console.log("game", game);
-const productId = game.productId;
-console.log("productId", productId);
 
 const gamesContainer = document.getElementById("games-container");
-const apiUrl = `https://wordpress.runeunhjem.no/wp-json/wc/store/products?id=${productId}`;
-
+const apiUrl = "https://wordpress.runeunhjem.no/wp-json/wc/store/products?per_page=50";
+const games = [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
 
 // Send a GET request to the API endpoint
 fetch(apiUrl)

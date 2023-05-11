@@ -10,6 +10,8 @@ const game = games.find((e) => e.id === parseInt(gameId));
 console.log("game", game);
 const productId = game.productId;
 console.log("productId", productId);
+// const getGameId = game.id;
+// console.log("geetGameId", getGameId);
 
 const gamesContainer = document.getElementById("games-container");
 const apiUrl = `https://wordpress.runeunhjem.no/wp-json/wc/store/products?id=${productId}`;
