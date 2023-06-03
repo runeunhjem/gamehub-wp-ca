@@ -51,4 +51,4 @@ async function getGameData() {
 
 getGameData();
 
-export { getGameData, games };
+export { games };
